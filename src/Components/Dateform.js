@@ -14,6 +14,7 @@ const Dateform = (test) => {
   const [diffSeconds, setDiffSeconds] = useState (null);
   const [futureDate, setFutureDate] = useState (null);
   const [textstring, setTextstring] = useState (null);
+  const [dagsdato, setDagsdato] = useState (null);
 
   useEffect(()=>{
 
@@ -38,12 +39,13 @@ const Dateform = (test) => {
       var myEpoch = myDate.getTime();
       console.log (myEpoch);
         localStorage.setItem('myValueInLocalStorage', myEpoch)
-        localStorage.setItem('mytextInLocalStorage', textstring);
+        localStorage.setItem('mytextInLocalStorage', data.aftertext);
         console.log (myEpoch);
-
+        console.log (textstring);
         setFutureDate(new Date (myEpoch))
-
+        setDagsdato(myEpoch/ 86400)
         console.log (futureDate)
+        console.log (dagsdato)
 
         
 
@@ -76,10 +78,10 @@ const Dateform = (test) => {
     };
 
   
-  
-    console.log(watch("dato"));
-    console.log(watch("hours"));
-    console.log(watch("aftertext"));
+  //Tjek hvad der er tastet ind
+    //console.log(watch("dato"));
+    //console.log(watch("hours"));
+    //console.log(watch("aftertext"));
     
   
  const labelstyle = css`
@@ -88,7 +90,7 @@ const Dateform = (test) => {
  `;
 
 const inputstyle = css`
- width: 200px;
+ width: 300px;
  font-size: 1rem;
  
 `;
@@ -104,9 +106,9 @@ const inputstyle = css`
     
     `;
 
-let DATEX =  localStorage.getItem('myValueInLocalStorage');
+//let DATEX =  localStorage.getItem('myValueInLocalStorage');
 
-console.log (DATEX)
+//console.log (DATEX)
 
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -129,7 +131,7 @@ useEffect(() => {
  ;
 }, [currentDate]);
 
-console.log (currentDate)
+//console.log (currentDate)
 
 
 
@@ -141,16 +143,17 @@ console.log (currentDate)
       
      
      
-      <input css={inputstyle}type='date' name="dato"  ref={register({ required: true })} />
+      <input css={inputstyle}type='date' name="dato" ref={register({ required: true }, { min: dagsdato})} />
       <input css={inputstyle}type='time' step="1" name="hours"  ref={register({ required: true })} />
-      <input css={inputstyle}type='text' name="aftertext"  ref={register({ required: true })} />
+      <input css={inputstyle}type='text' placeholder="Skriv noget ... f.eks. 'til juleaften'"name="aftertext"  ref={register({ required: true })} />
     
       
       
       
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input type="submit"  />
+      <input type="submit" value="Gør det!" />
+      <input type="reset" value="Nulstil" />
     </form>
     <h1>{numdays}  dage   {numhours}  timer   {numminutes}   minutter   {numseconds}  sekunder {textstring} </h1>
     
