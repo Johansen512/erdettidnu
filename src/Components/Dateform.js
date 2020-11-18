@@ -1,20 +1,28 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useForm } from "react-hook-form";
-
+import { dataContext } from "../Contexts/dataContext"
+import { navigate } from "@reach/router";
 
   
 const Dateform = (test) => {
-  const [numdays, setNumdays] = useState (null);
-  const [numhours, setNumhours] = useState (null);
-  const [numminutes, setNumminutes] = useState (null);
-  const [numseconds, setNumseconds] = useState (null);
-  const [currentDate, setCurrentDate] = useState (null);
-  const [diffSeconds, setDiffSeconds] = useState (null);
-  const [futureDate, setFutureDate] = useState (null);
-  const [textstring, setTextstring] = useState (null);
-  const [dagsdato, setDagsdato] = useState (null);
+  const {setNumdays}=useContext(dataContext);
+  const {setNumhours}=useContext(dataContext);
+  const {setNumminutes}=useContext(dataContext);
+  const {setNumseconds}=useContext(dataContext);
+  const {textstring}=useContext(dataContext);
+  const {setTextstring}=useContext(dataContext);
+  const {currentDate}=useContext(dataContext);
+  const {diffSeconds}=useContext(dataContext);
+  const {futureDate}=useContext(dataContext);
+  const {dagsdato}=useContext(dataContext);
+  const {setCurrentDate}=useContext(dataContext);
+  const {setDiffSeconds}=useContext(dataContext);
+  const {setFutureDate}=useContext(dataContext);
+  const {setDagsdato}=useContext(dataContext);
+
+ 
 
   useEffect(()=>{
 
@@ -25,11 +33,13 @@ const Dateform = (test) => {
     setFutureDate(magicDate);
     setTextstring(magicText)
 
-  }, [])
+  }, [setFutureDate,setTextstring ])
   
   
     const { register, handleSubmit, watch, errors } = useForm();
-    const onSubmit = data => {console.log (data.dato, data.hours, data.aftertext)
+    const onSubmit = data => {
+      
+      console.log (data.dato, data.hours, data.aftertext)
     const datestring = data.dato + "T" + data.hours;
     
     setTextstring (data.aftertext)
@@ -43,9 +53,9 @@ const Dateform = (test) => {
         console.log (myEpoch);
         console.log (textstring);
         setFutureDate(new Date (myEpoch))
-        setDagsdato(myEpoch/ 86400)
-        console.log (futureDate)
-        console.log (dagsdato)
+        
+        console.log ("future date from context: ",futureDate)
+        
 
         
 
@@ -110,30 +120,15 @@ const inputstyle = css`
 
 //console.log (DATEX)
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setCurrentDate(Date.now());
-    setDiffSeconds((futureDate - currentDate)/1000)
 
-    setNumdays( Math.floor(diffSeconds / 86400));
-
-    setNumhours ( Math.floor((diffSeconds % 86400) / 3600));
-
-   setNumminutes(Math.floor(((diffSeconds % 86400) % 3600) / 60));
-
-    setNumseconds(Math.floor ((diffSeconds % 86400) % 3600) % 60);
-
-
-
-
-
-  }, 1000);
- ;
-}, [currentDate]);
 
 //console.log (currentDate)
 
-
+function handleClick(e) {
+       
+  console.log('The link was REALLY clicked.');
+  navigate("/displayview");
+}
 
     return (
         <section>
@@ -143,7 +138,7 @@ useEffect(() => {
       
      
      
-      <input css={inputstyle}type='date' name="dato" ref={register({ required: true }, { min: dagsdato})} />
+      <input css={inputstyle}type='date' name="dato" ref={register({ required: true })} />
       <input css={inputstyle}type='time' step="1" name="hours"  ref={register({ required: true })} />
       <input css={inputstyle}type='text' placeholder="Skriv noget ... f.eks. 'til juleaften'"name="aftertext"  ref={register({ required: true })} />
     
@@ -152,10 +147,12 @@ useEffect(() => {
       
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input type="submit" value="Gør det!" />
+      <input type="submit" value="Gør det!" onClick={handleClick} />
       <input type="reset" value="Nulstil" />
     </form>
-    <h1>{numdays}  dage   {numhours}  timer   {numminutes}   minutter   {numseconds}  sekunder {textstring} </h1>
+
+    
+    
     
     
     
