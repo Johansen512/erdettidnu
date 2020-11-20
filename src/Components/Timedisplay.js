@@ -4,8 +4,9 @@ import {  useEffect, useContext} from 'react';
 import { dataContext } from "../Contexts/dataContext";
 import { navigate } from "@reach/router";
 
-const Timedisplay = ({themeprop, prop}) => {
-
+const Timedisplay = ({themepic, prop}) => {
+const themepic2=localStorage.getItem ("mybackInLocalStorage")
+console.log (themepic2)
   const timedisplaystyle = css`
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@ const Timedisplay = ({themeprop, prop}) => {
   align-items: center;
   background-color: lightblue;
   font-size: 2rem;
-  background-image: url(../img/${themeprop}.jpg);
+  background-image: url(../img/${themepic2}.jpg);
   overflow: hidden;
   background-repeat: no-repeat;
   padding: 0.5rem;

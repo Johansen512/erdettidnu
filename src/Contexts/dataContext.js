@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const dataContext = createContext();
 
@@ -12,6 +12,8 @@ const DataContextProvider = (props) => {
     const [currentDate, setCurrentDate] = useState (null);
     const [diffSeconds, setDiffSeconds] = useState (null);
     const [futureDate, setFutureDate] = useState (null); 
+    //const [themepic, setThemepic] = useState (null); 
+
     
 
    

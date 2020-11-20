@@ -1,6 +1,6 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { dataContext } from "../Contexts/dataContext"
 import { navigate } from "@reach/router";
@@ -20,6 +20,7 @@ const Dateform = ({ buttimage, themeprop, props }) => {
   border: 10px solid #184d6c;
   background-color: lightblue;
   font-size: 2rem;
+  
   
   
   
@@ -87,6 +88,8 @@ padding: 0.5rem;
   const {setDiffSeconds}=useContext(dataContext);
   const {setFutureDate}=useContext(dataContext);
   const {setDagsdato}=useContext(dataContext);
+ 
+
 
  
 
@@ -109,27 +112,23 @@ padding: 0.5rem;
     const datestring = data.dato + "T" + data.hours;
     
     setTextstring (data.aftertext)
+    
     console.log(datestring);
     console.log(textstring);
+    console.log (themeprop)
       var myDate = new Date(datestring); 
       var myEpoch = myDate.getTime();
       console.log (myEpoch);
+      
         localStorage.setItem('myValueInLocalStorage', myEpoch)
         localStorage.setItem('mytextInLocalStorage', data.aftertext);
-        localStorage.setItem('mybackInLocalStorage', themeprop);
+        
         console.log (myEpoch);
         console.log (textstring);
         setFutureDate(new Date (myEpoch))
         
         console.log ("future date from context: ",futureDate)
-        
-
-        
-
         console.log (currentDate)
-
-       
-
         console.log (diffSeconds + "forskellen mellem senere og nu")
 
         
@@ -173,7 +172,7 @@ padding: 0.5rem;
 
 function handleClick(e) {
        
-  console.log('The link was REALLY clicked.');
+  
   navigate("/displayview");
 }
 

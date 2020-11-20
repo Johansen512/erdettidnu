@@ -30,7 +30,7 @@ function handleTheme(e) {
     console.log(buttimage);
 
     console.log(themeprop);
-    
+    localStorage.setItem('mybackInLocalStorage', themeprop)
   }
 
     return ( 
