@@ -74,20 +74,20 @@ padding: 0.5rem;
 
 
   
-  const {setNumdays}=useContext(dataContext);
+ /* const {setNumdays}=useContext(dataContext);
   const {setNumhours}=useContext(dataContext);
   const {setNumminutes}=useContext(dataContext);
-  const {setNumseconds}=useContext(dataContext);
+  const {setNumseconds}=useContext(dataContext);*/
   const {textstring}=useContext(dataContext);
   const {setTextstring}=useContext(dataContext);
   const {currentDate}=useContext(dataContext);
   const {diffSeconds}=useContext(dataContext);
   const {futureDate}=useContext(dataContext);
-  const {dagsdato}=useContext(dataContext);
+  /*const {dagsdato}=useContext(dataContext);
   const {setCurrentDate}=useContext(dataContext);
-  const {setDiffSeconds}=useContext(dataContext);
+  const {setDiffSeconds}=useContext(dataContext);*/
   const {setFutureDate}=useContext(dataContext);
-  const {setDagsdato}=useContext(dataContext);
+  /*const {setDagsdato}=useContext(dataContext);*/
  
 
 
@@ -97,8 +97,8 @@ padding: 0.5rem;
 
     let magicDate = localStorage.getItem('myValueInLocalStorage');
     let magicText = localStorage.getItem('mytextInLocalStorage');
-    console.log(magicDate);
-    console.log(magicText);
+    //console.log(magicDate);
+    //console.log(magicText);
     setFutureDate(magicDate);
     setTextstring(magicText)
 
@@ -114,22 +114,22 @@ padding: 0.5rem;
     setTextstring (data.aftertext)
     
     console.log(datestring);
-    console.log(textstring);
-    console.log (themeprop)
+    //console.log(textstring);
+    //console.log (themeprop)
       var myDate = new Date(datestring); 
       var myEpoch = myDate.getTime();
-      console.log (myEpoch);
+      
       
         localStorage.setItem('myValueInLocalStorage', myEpoch)
         localStorage.setItem('mytextInLocalStorage', data.aftertext);
         
         console.log (myEpoch);
-        console.log (textstring);
+        //console.log (textstring);
         setFutureDate(new Date (myEpoch))
         
         console.log ("future date from context: ",futureDate)
-        console.log (currentDate)
-        console.log (diffSeconds + "forskellen mellem senere og nu")
+        //console.log (currentDate)
+        //console.log (diffSeconds + "forskellen mellem senere og nu")
 
         
   
@@ -171,9 +171,24 @@ padding: 0.5rem;
 //console.log (currentDate)
 
 function handleClick(e) {
-       
+
+  const date2 = new Date();
+  date2.setMinutes( date2.getMinutes() + 30 );
+
+  let Poch = new Date().getTime()
+  let num = 60000
+  let Poch2 = Poch+num
+ 
+
+let testting = futureDate > Poch2
+
+testting ?  navigate("/displayview") : <h1>NEJ</h1>
+
+   
+      
+
   
-  navigate("/displayview");
+  
 }
 
 
@@ -185,7 +200,7 @@ function handleClick(e) {
       
      
      
-      <input css={inputstyle}type='date' name="dato" ref={register({ required: true })} />
+      <input css={inputstyle}type='date' name="dato"  ref={register({ required: true })} />
       <input css={inputstyle}type='time' step="1" name="hours"  ref={register({ required: true })} />
       <input css={inputstyle}type='text' placeholder="Skriv noget ... f.eks. 'til jul'"name="aftertext"  ref={register({ required: true })} />
     
@@ -194,7 +209,7 @@ function handleClick(e) {
       
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input css={newbutton} type="submit" value="Gør det!" min="2020-01-09" onClick={handleClick} />
+      <input css={newbutton} type="submit" value="Gør det!" onClick={handleClick} />
       <input css={newbutton} type="reset" value="Nulstil" />
       <div css={buttonwrapper}>
 <Themebutton  buttimage="xmasSmall" themeprop="christmas"/>

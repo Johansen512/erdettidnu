@@ -6,7 +6,7 @@ import { navigate } from "@reach/router";
 
 const Timedisplay = ({themepic, prop}) => {
 const themepic2=localStorage.getItem ("mybackInLocalStorage")
-console.log (themepic2)
+
   const timedisplaystyle = css`
   display: flex;
   flex-direction: column;
@@ -85,7 +85,7 @@ min-width: 14rem;
 
       function handleClick(e) {
        
-        console.log('The link was clicked.');
+        //console.log('The link was clicked.');
         navigate("/");
       }
     return ( 

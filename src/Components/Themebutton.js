@@ -27,9 +27,9 @@ border-radius:50%;
 
 function handleTheme(e) {
        
-    console.log(buttimage);
+    //console.log(buttimage);
 
-    console.log(themeprop);
+    //console.log(themeprop);
     localStorage.setItem('mybackInLocalStorage', themeprop)
   }
 
