@@ -27,21 +27,28 @@ const newbutton = css`
 max-width: 30rem;  
 background-color: #4c93bc;
 border: 10px solid #3a799d;
+
 padding: 0.5rem;
 margin: 0.5rem;
 margin-bottom:30rem;
 font-size:2rem;
+@media (max-width: 400px) {
+        font-size: 1.2rem;}
 border-radius:20rem;
 box-shadow:2px 2px 5px #05334e;
 `;
 
 const pstyle = css`
 
-border: 10px solid #3a799d;
+border: 10px solid #61a5cc;
 background-color: #ffffff;
+border-style:ridge;
 padding: 0.5rem;
 margin: 0.5rem;
 font-size:2rem;
+@media (max-width: 400px) {
+        font-size: 1rem;
+      }
 max-width: 30rem;
 min-width: 14rem;
 

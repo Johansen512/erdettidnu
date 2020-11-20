@@ -15,7 +15,7 @@ font-size: 1.3rem;
  padding: 0.5rem;
  width: 5rem;
  height: 5rem;
- border: 1px solid #3a799d;
+ border: 8px solid #3a799d;
 background-color: #4c93bc;
 overflow:hidden;
 padding: 0.5rem;
