@@ -68,15 +68,7 @@ padding: 0.5rem;
 
     
     
-    const style = css`
-    border: 40px solid deeppink;
-    width: 400px;
-    height: 400px;
-    background-color:lightblue; 
-    margin: 0.5rem;
-    font-size: 1rem;
-    
-    `;
+  
 
     const billboardstyle= css`
     
@@ -98,19 +90,18 @@ padding: 0.5rem;
  /* const {setNumdays}=useContext(dataContext);
   const {setNumhours}=useContext(dataContext);
   const {setNumminutes}=useContext(dataContext);
-  const {setNumseconds}=useContext(dataContext);*/
+  const {setNumseconds}=useContext(dataContext);
   const {textstring}=useContext(dataContext);
-  const {setTextstring}=useContext(dataContext);
-  const {currentDate}=useContext(dataContext);
+   const {currentDate}=useContext(dataContext);
   const {diffSeconds}=useContext(dataContext);
-  const {futureDate}=useContext(dataContext);
-  /*const {dagsdato}=useContext(dataContext);
+  const {dagsdato}=useContext(dataContext);
   const {setCurrentDate}=useContext(dataContext);
-  const {setDiffSeconds}=useContext(dataContext);*/
-  const {setFutureDate}=useContext(dataContext);
-  /*const {setDagsdato}=useContext(dataContext);*/
- 
+  const {setDiffSeconds}=useContext(dataContext);
+  const {setDagsdato}=useContext(dataContext);*/
 
+  const {setFutureDate}=useContext(dataContext);
+  const {setTextstring}=useContext(dataContext);
+  const {futureDate}=useContext(dataContext);
 
  
 
@@ -118,15 +109,14 @@ padding: 0.5rem;
 
     let magicDate = localStorage.getItem('myValueInLocalStorage');
     let magicText = localStorage.getItem('mytextInLocalStorage');
-    //console.log(magicDate);
-    //console.log(magicText);
-    setFutureDate(magicDate);
+    
+  setFutureDate(magicDate);
     setTextstring(magicText)
 
   }, [setFutureDate,setTextstring ])
   
   
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
       
       console.log (data.dato, data.hours, data.aftertext)
@@ -135,8 +125,6 @@ padding: 0.5rem;
     setTextstring (data.aftertext)
     
     console.log(datestring);
-    //console.log(textstring);
-    //console.log (themeprop)
       var myDate = new Date(datestring); 
       var myEpoch = myDate.getTime();
       
@@ -145,52 +133,17 @@ padding: 0.5rem;
         localStorage.setItem('mytextInLocalStorage', data.aftertext);
         
         console.log (myEpoch);
-        //console.log (textstring);
+        
         setFutureDate(new Date (myEpoch))
         
         console.log ("future date from context: ",futureDate)
-        //console.log (currentDate)
-        //console.log (diffSeconds + "forskellen mellem senere og nu")
-
-        
-  
-       
-         
-
-       
-        
-       
-
-
-     
-        
-     
-         
-                  
-        
-
       
-    
     
     };
 
   
-  //Tjek hvad der er tastet ind
-    //console.log(watch("dato"));
-    //console.log(watch("hours"));
-    //console.log(watch("aftertext"));
-    
-  
  
-
-//let DATEX =  localStorage.getItem('myValueInLocalStorage');
-
-//console.log (DATEX)
-
-
-
-//console.log (currentDate)
-
+    
 function handleClick(e) {
 
   const date2 = new Date();
@@ -205,10 +158,6 @@ let testting = futureDate > Poch2
 
 testting ?  navigate("/displayview") : setShow (true)
 
-   
-      
-
-  
   
 }
 
@@ -219,14 +168,10 @@ testting ?  navigate("/displayview") : setShow (true)
     
     <label  htmlFor="number">Vælg dato og tid</label>
       
-     
-     
       <input css={inputstyle}type='date' name="dato"  ref={register({ required: true })} />
       <input css={inputstyle}type='time' step="1" name="hours"  ref={register({ required: true })} />
       <input css={inputstyle}type='text' placeholder="Skriv noget ... f.eks. 'til jul'"name="aftertext"  ref={register({ required: true })} />
     
-      
-      
       
       {errors.exampleRequired && <span>This field is required</span>}
       

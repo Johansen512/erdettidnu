@@ -69,7 +69,9 @@ min-width: 14rem;
    setTextstring(localStorage.getItem("mytextInLocalStorage"));
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        //const timer = 
+        
+        setTimeout(() => {
           setCurrentDate(Date.now());
           setDiffSeconds((futureDate - currentDate)/1000)
       
@@ -80,9 +82,6 @@ min-width: 14rem;
          setNumminutes(Math.floor(((diffSeconds % 86400) % 3600) / 60));
       
           setNumseconds(Math.floor ((diffSeconds % 86400) % 3600) % 60);
-      
-      
-      
       
       
         }, 1000);

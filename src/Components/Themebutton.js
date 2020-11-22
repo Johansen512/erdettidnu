@@ -1,9 +1,6 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { useState, useEffect, useContext } from 'react';
-import { useForm } from "react-hook-form";
-import { dataContext } from "../Contexts/dataContext"
-import { navigate } from "@reach/router";
+
 
 const Themebutton= ({buttimage, themeprop}) => {
 
@@ -27,9 +24,7 @@ border-radius:50%;
 
 function handleTheme(e) {
        
-    //console.log(buttimage);
-
-    //console.log(themeprop);
+    
     localStorage.setItem('mybackInLocalStorage', themeprop)
   }
 
