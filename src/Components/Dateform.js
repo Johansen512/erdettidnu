@@ -169,7 +169,7 @@ testting ?  navigate("/displayview") : setShow (true)
     <label  htmlFor="number">Vælg dato og tid</label>
       
       <input css={inputstyle}type='date' name="dato"  ref={register({ required: true })} />
-      <input css={inputstyle}type='time' step="1" name="hours"  ref={register({ required: true })} />
+      <input css={inputstyle}type='time' twelvehour="false" step="1" name="hours"  ref={register({ required: true })} />
       <input css={inputstyle}type='text' placeholder="Skriv noget ... f.eks. 'til jul'"name="aftertext"  ref={register({ required: true })} />
     
       
