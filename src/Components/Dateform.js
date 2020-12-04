@@ -39,7 +39,7 @@ padding: 0.5rem;
 margin: 0.5rem;
 font-size:2rem;
 @media (max-width: 400px) {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 border-radius:20rem;
 
